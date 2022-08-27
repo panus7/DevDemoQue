@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=0,viewport-fit=cover"
+    />
+    <title>LIFF: LINE Front-end Framework</title>
+
+    <script src="/api-line.js"></script>
+
+    <!-- 0. Import LIFF SDK -->
+    <!-- <script src="https://static.line-scdn.net/liff/edge/versions/2.1.13/sdk.js"></script> -->
+  </head>
+  <body id="body">
+    <section id="profile">
+      <img id="pictureUrl" src="https://mokmoon.com/images/ic_liff.png" />
+      <!-- 3. Show user profile -->
+      <p id="userId"></p>
+      <p id="displayName"></p>
+      <p id="statusMessage"></p>
+      <p id="email"></p>
+    </section>
+
+    <section id="feature">
+      <!-- 21. Show code -->
+      <p id="code"></p>
+
+      <!-- 30. Show friendship -->
+      <p id="friendship"></p>
+    </section>
+
+    <form>
+      <div class="form-group row">
+        <label for="staticEmail" class="col-sm-2 col-form-label">IDCard</label>
+        <div class="col-sm-10">
+          <input type="text" id="txt_idcard" placeholder="IDCard" />
+        </div>
+      </div>
+      <div class="form-group row">
+        <label for="inputPassword" class="col-sm-2 col-form-label"
+          >Telephone</label
+        >
+        <div class="col-sm-10">
+          <input type="text" id="txt_phone" placeholder="Telephone NO." />
+        </div>
+      </div>
+      <div class="form-group row">
+        <label for="inputPassword" class="col-sm-2 col-form-label">Email</label>
+        <div class="col-sm-10">
+          <input type="text" id="txt_email" placeholder="Email" />
+        </div>
+      </div>
+    </form>
+
+    <section id="button">
+      <!-- 26. OpenWindow button -->
+      <button id="btnOpenWindow">Open Window</button>
+
+      <!-- 22. Scan code button -->
+      <button id="btnScanCode">Scan QR</button>
+
+      <!-- 17. Share message * -->
+      <button id="btnShare">Share Message</button>
+
+      <!-- 13. Send message * -->
+      <button id="btnSend">Send Message</button>
+
+      <!-- 7. Support External Browser -->
+      <button id="btnLogIn">Log In</button>
+      <button id="btnLogOut">Log Out</button>
+
+      <button id="LineRegister" onclick="funcLineRegister()">
+        LineRegister
+      </button>
+    </section>
+  </body>
+</html>
