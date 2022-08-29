@@ -12,25 +12,11 @@ import liff from '@line/liff';
 const body = document.getElementById('body');
 
 // Button elements
-const btnSend = document.getElementById('btnSend');
-const btnClose = document.getElementById('btnClose');
-const btnShare = document.getElementById('btnShare');
-const btnLogIn = document.getElementById('btnLogIn');
-const btnLogOut = document.getElementById('btnLogOut');
-const btnScanCode = document.getElementById('btnScanCode');
-const btnOpenWindow = document.getElementById('btnOpenWindow');
-const btnLineRegister = document.getElementById('LineRegister');
+// const btnSend = document.getElementById('btnSend');
 
 // Profile elements
-const email = document.getElementById('email');
-const userId = document.getElementById('userId');
-const pictureUrl = document.getElementById('pictureUrl');
-const displayName = document.getElementById('displayName');
-const statusMessage = document.getElementById('statusMessage');
+// const email = document.getElementById('email');
 const lineUserId = '';
-// QR element
-const code = document.getElementById('code');
-const friendShip = document.getElementById('friendship');
 
 async function main() {
   liff.ready.then(() => {
@@ -78,94 +64,6 @@ async function getUserProfile() {
   statusMessage.innerHTML = '<b>IDToken</b> ' + liff.getIDToken();
   pictureUrl.src = profile.pictureUrl;
   email.innerHTML = '<b>E-mail</b> ' + liff.getDecodedIDToken().email;
-}
-
-// 9. Add event listener to login button
-btnLogIn.onclick = () => {
-  liff.login();
-};
-
-// 10. Add event listener to logout button then reload the page
-btnLogOut.onclick = () => {
-  liff.logout();
-  window.location.reload();
-};
-
-// 14. Create sendMsg()
-// 14.1 Ensure LIFF was opened from LINE app
-// 29. Change alert to close
-async function sendMsg() {
-  if (
-    liff.getContext().type !== 'none' &&
-    liff.getContext().type !== 'external'
-  ) {
-    await liff.sendMessages([
-      {
-        type: 'text',
-        text: liff.getAccessToken(),
-      },
-    ]);
-    liff.closeWindow();
-  }
-}
-
-// 15. Add event listener to send button
-btnSend.onclick = () => {
-  sendMsg();
-};
-
-// 18. Create shareMsg()
-async function shareMsg() {
-  await liff.shareTargetPicker([
-    {
-      type: 'text',
-      text: liff.getIDToken(),
-      // type: 'image',
-      // originalContentUrl: 'https://linerookie.com/images/ic_liff.png',
-      // previewImageUrl: 'https://linerookie.com/images/ic_liff.png',
-    },
-  ]);
-  liff.closeWindow();
-}
-
-// 19. Add event listener to share button
-btnShare.onclick = () => {
-  shareMsg();
-};
-
-// 23. Create scanCode()
-async function scanCode() {
-  const result = await liff.scanCode();
-  code.innerHTML = '<b>QR</b> ' + result.value;
-}
-
-// 24. Add event listener to QR button
-btnScanCode.onclick = () => {
-  scanCode();
-};
-
-// 27. Add event listener to OpenWindow button
-btnOpenWindow.onclick = () => {
-  liff.openWindow({
-    url: 'https://line.me',
-    external: false,
-  });
-};
-
-btnLineRegister.onclick = () => {
-  funcLineRegister();
-};
-
-// 31. Create getFriendship()
-// 31.1 Add condition to check friend status
-async function getFriendship() {
-  let msg = 'Hooray! you and our chatbot are friend';
-  const friend = await liff.getFriendship();
-  if (!friend.friendFlag) {
-    msg =
-      "<a href='https://line.me/R/ti/p/@754tuyrl'>Follow our chatbot here!</a>";
-  }
-  friendShip.innerHTML = msg;
 }
 
 function funcLineRegister() {
